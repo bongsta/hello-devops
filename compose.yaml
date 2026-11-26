@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    container_name: hello-devops-web
+    ports:
+      - "127.0.0.1:8080:80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
